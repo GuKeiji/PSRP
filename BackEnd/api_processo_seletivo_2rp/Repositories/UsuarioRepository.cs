@@ -26,7 +26,8 @@ namespace api_processo_seletivo_2rp.Repositories
 
         public Usuario BuscarUsuario(int idUsuario)
         {
-            throw new NotImplementedException();
+            Usuario usuario = new Usuario();
+            return usuario = ctx.Usuarios.FirstOrDefault(u => u.IdUsuario == idUsuario);
         }
 
         public void CadastrarUsuario(UsuarioCadastroViewModel novoUsuario)

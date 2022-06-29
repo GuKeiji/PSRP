@@ -1,4 +1,5 @@
-﻿using api_processo_seletivo_2rp.Interfaces;
+﻿using api_processo_seletivo_2rp.Domains;
+using api_processo_seletivo_2rp.Interfaces;
 using api_processo_seletivo_2rp.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -38,6 +39,33 @@ namespace api_processo_seletivo_2rp.Controllers
                     return BadRequest(new
                     {
                         Mensagem = "Email ou Senha inválidos!"
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+                throw;
+            }
+
+        }
+
+        [HttpPost("BuscarUsuario")]
+        public IActionResult BuscarUsuario(int idUsuario)
+        {
+            try
+            {
+                if (idUsuario != null)
+                {
+                    Usuario usuarioEncontrado = _usuarioRepository.BuscarUsuario(idUsuario);
+                    return Ok(usuarioEncontrado);
+                }
+                else
+                {
+
+                    return BadRequest(new
+                    {
+                        Mensagem = "ID inválido!"
                     });
                 }
             }
