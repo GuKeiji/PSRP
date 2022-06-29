@@ -17,7 +17,21 @@ namespace api_processo_seletivo_2rp.Repositories
 
         public void AlterarSituacao(int idUsuario)
         {
-            throw new NotImplementedException();
+            Usuario usuarioAchado = BuscarUsuario(idUsuario);
+            if (usuarioAchado != null)
+            {
+                if (usuarioAchado.Situacao == true)
+                {
+                    usuarioAchado.Situacao = false;
+                    ctx.SaveChanges();
+                }
+                else if (usuarioAchado.Situacao == false)
+                {
+                    usuarioAchado.Situacao = true;
+                    ctx.SaveChanges();
+                }
+
+            }
         }
 
         public void AlterarUsuario(int idUsuario, UsuarioAtualizadoViewModel usuarioAtualizado)

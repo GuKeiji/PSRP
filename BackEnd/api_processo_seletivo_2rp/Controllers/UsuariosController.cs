@@ -118,6 +118,35 @@ namespace api_processo_seletivo_2rp.Controllers
 
         }
 
+        [HttpPut("AlterarStatus")]
+        public IActionResult AlterarStatus(int idUsuario)
+        {
+            try
+            {
+                Usuario usuarioAchado = _usuarioRepository.BuscarUsuario(idUsuario);
+                if (usuarioAchado == null)
+                {
+                    return BadRequest(new
+                    {
+                        Mensagem = "Usuário não encontrado!"
+                    });
+                }
+                else
+                {
+                    _usuarioRepository.AlterarSituacao(idUsuario);
+                    return StatusCode(200);
+                }
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+
+        }
+
         [HttpPost("ExcluirUsuario")]
         public IActionResult ExcluirUsuario(int idUsuario)
         {
