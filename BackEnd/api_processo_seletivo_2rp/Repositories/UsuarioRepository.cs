@@ -3,6 +3,7 @@ using api_processo_seletivo_2rp.Domains;
 using api_processo_seletivo_2rp.Interfaces;
 using api_processo_seletivo_2rp.Utils;
 using api_processo_seletivo_2rp.ViewModels;
+using PSRP.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,15 +20,13 @@ namespace api_processo_seletivo_2rp.Repositories
             throw new NotImplementedException();
         }
 
-        public void AlterarUsuario(int idUsuario, UsuarioCadastroViewModel usuarioAtualizado)
+        public void AlterarUsuario(int idUsuario, UsuarioAtualizadoViewModel usuarioAtualizado)
         {
             Usuario usuarioAchado = BuscarUsuario(idUsuario);
 
-            if (usuarioAchado.Nome != null && usuarioAchado.Email != null && usuarioAchado.Senha != null)
+            if (usuarioAchado != null)
             {
                 usuarioAchado.Nome = usuarioAtualizado.Nome;
-                usuarioAchado.Senha = usuarioAtualizado.Senha;
-                usuarioAchado.Email = usuarioAtualizado.Email;
                 usuarioAchado.IdTipoUsuario = (byte?)usuarioAtualizado.IdTipoUsuario;
                 ctx.SaveChanges();
             }
@@ -59,7 +58,9 @@ namespace api_processo_seletivo_2rp.Repositories
 
         public void ExcluirUsuario(int idUsuario)
         {
-            throw new NotImplementedException();
+            Usuario usuarioAchado = BuscarUsuario(idUsuario);
+            ctx.Usuarios.Remove(usuarioAchado);
+            ctx.SaveChanges();
         }
 
         public Usuario Login(string email, string senha)

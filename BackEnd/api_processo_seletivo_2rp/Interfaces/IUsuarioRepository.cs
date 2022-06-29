@@ -1,5 +1,6 @@
 ﻿using api_processo_seletivo_2rp.Domains;
 using api_processo_seletivo_2rp.ViewModels;
+using PSRP.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace api_processo_seletivo_2rp.Interfaces
     {
         Usuario Login(string email, string senha);
         Usuario BuscarUsuario(int idUsuario);
-        void AlterarUsuario(int idUsuario, UsuarioCadastroViewModel novoUsuario);
+        void AlterarUsuario(int idUsuario, UsuarioAtualizadoViewModel novoUsuario);
         void ExcluirUsuario(int idUsuario);
         void CadastrarUsuario(UsuarioCadastroViewModel novoUsuario);
         void AlterarSituacao(int idUsuario);

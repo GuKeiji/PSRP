@@ -3,6 +3,7 @@ using api_processo_seletivo_2rp.Interfaces;
 using api_processo_seletivo_2rp.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using PSRP.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -89,7 +90,7 @@ namespace api_processo_seletivo_2rp.Controllers
         }
 
         [HttpPut("AtualizarUsuario")]
-        public IActionResult AtualizarUsuario(int idUsuario, [FromForm] UsuarioCadastroViewModel usuarioAtualizado)
+        public IActionResult AtualizarUsuario(int idUsuario, [FromForm] UsuarioAtualizadoViewModel usuarioAtualizado)
         {
             try
             {
@@ -117,6 +118,46 @@ namespace api_processo_seletivo_2rp.Controllers
 
         }
 
+        [HttpPost("ExcluirUsuario")]
+        public IActionResult ExcluirUsuario(int idUsuario)
+        {
+            try
+            {
+                if(idUsuario > 0)
+                {
+                    Usuario usuarioEncontrado = _usuarioRepository.BuscarUsuario(idUsuario);
+                    if (usuarioEncontrado == null)
+                    {
+                        return BadRequest(new
+                        {
+                            Mensagem = "ID inválido!"
+                        });
+                    }
+                    else
+                    {
+
+                        _usuarioRepository.ExcluirUsuario(idUsuario);
+                        return StatusCode(200);
+
+                    }
+                }
+                else
+                {
+
+                    return BadRequest(new
+                    {
+                        Mensagem = "ID inválido!"
+                    });
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
 
         }
+
+
+    }
 }
