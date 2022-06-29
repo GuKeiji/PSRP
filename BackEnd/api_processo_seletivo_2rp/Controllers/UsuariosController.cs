@@ -55,10 +55,21 @@ namespace api_processo_seletivo_2rp.Controllers
         {
             try
             {
-                if (idUsuario != null)
+                if (idUsuario > 0)
                 {
                     Usuario usuarioEncontrado = _usuarioRepository.BuscarUsuario(idUsuario);
-                    return Ok(usuarioEncontrado);
+                    if (usuarioEncontrado == null)
+                    {
+                        return BadRequest(new
+                        {
+                            Mensagem = "ID inválido!"
+                        });
+                    }
+                    else
+                    {
+                        return Ok(usuarioEncontrado);
+
+                    }
                 }
                 else
                 {
