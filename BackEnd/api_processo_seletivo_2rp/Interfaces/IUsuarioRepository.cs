@@ -11,7 +11,7 @@ namespace api_processo_seletivo_2rp.Interfaces
     {
         Usuario Login(string email, string senha);
         Usuario BuscarUsuario(int idUsuario);
-        void AlterarUsuario(int idUsuario, Usuario novoUsuario);
+        void AlterarUsuario(int idUsuario, UsuarioCadastroViewModel novoUsuario);
         void ExcluirUsuario(int idUsuario);
         void CadastrarUsuario(UsuarioCadastroViewModel novoUsuario);
         void AlterarSituacao(int idUsuario);

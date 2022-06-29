@@ -19,9 +19,18 @@ namespace api_processo_seletivo_2rp.Repositories
             throw new NotImplementedException();
         }
 
-        public void AlterarUsuario(int idUsuario, Usuario novoUsuario)
+        public void AlterarUsuario(int idUsuario, UsuarioCadastroViewModel usuarioAtualizado)
         {
-            throw new NotImplementedException();
+            Usuario usuarioAchado = BuscarUsuario(idUsuario);
+
+            if (usuarioAchado.Nome != null && usuarioAchado.Email != null && usuarioAchado.Senha != null)
+            {
+                usuarioAchado.Nome = usuarioAtualizado.Nome;
+                usuarioAchado.Senha = usuarioAtualizado.Senha;
+                usuarioAchado.Email = usuarioAtualizado.Email;
+                usuarioAchado.IdTipoUsuario = (byte?)usuarioAtualizado.IdTipoUsuario;
+                ctx.SaveChanges();
+            }
         }
 
         public Usuario BuscarUsuario(int idUsuario)

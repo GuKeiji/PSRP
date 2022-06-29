@@ -87,5 +87,36 @@ namespace api_processo_seletivo_2rp.Controllers
             }
 
         }
-    }
+
+        [HttpPut("AtualizarUsuario")]
+        public IActionResult AtualizarUsuario(int idUsuario, [FromForm] UsuarioCadastroViewModel usuarioAtualizado)
+        {
+            try
+            {
+                Usuario usuarioAchado = _usuarioRepository.BuscarUsuario(idUsuario);
+                if (usuarioAchado == null)
+                {
+                    return BadRequest(new
+                    {
+                        Mensagem = "Usuário não encontrado!"
+                    });
+                }
+                else
+                {
+                    _usuarioRepository.AlterarUsuario(idUsuario, usuarioAtualizado);
+                    return StatusCode(200);
+                }
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+
+        }
+
+
+        }
 }
