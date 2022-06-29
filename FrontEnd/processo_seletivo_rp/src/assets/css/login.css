@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300;400;500;600;700&display=swap');
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/*//////////  Login  /////////*/
+
+.container {
+    width: 80vw;
+}
+
+.container_main {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    background-image: url(https://www.2rpnet.com.br/media/contato/backgrounds/contato.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.container_logo {
+    display: flex;
+    align-items: center;
+    /* background-color: #ff003c; */
+    height: 20vh;
+    /* width: 100vw; */
+}
+
+.logo_header {
+    width: 20%;
+}
+
+.organizar_form {
+    display: flex;
+    /* flex-direction: column; */
+    /* align-items: center; */
+    justify-content: space-between;
+    height: 80vh;
+    /* background-color: antiquewhite; */
+    /* width: 100vw; */
+}
+
+.container_text_login {
+    display: flex;
+    align-items: center;
+    height: 80%;
+    width: 43vw;
+}
+
+.text_form {
+    font-family: 'Montserrat', sans-serif;
+    color: #ffffff;
+    font-size: 3em;
+    font-weight: 700;
+    max-width: 100%;
+}
+
+.organizar_label_form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 80%;
+    /* background-color: aqua; */
+}
+
+.titulo_form {
+    font-family: 'Montserrat', sans-serif;
+    color: #ffffff;
+    font-size: 3em;
+    font-weight: 700;
+}
+
+.container_form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    border-radius: 12px;
+    height: 80%;
+    width: 20vw;
+    padding: 8%;
+    background-color: #ffffff;
+}
+
+.container_input_label {
+    display: flex;
+    flex-direction: column;
+    height: 15%;
+    /* background-color: aqua; */
+    justify-content: space-around;
+}
+
+.label_form {
+    color: #022041;
+    font-size: 1.5em;
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.input_form {
+    border-radius: 15px;
+    height: 43%;
+    border: 1px #0f2843 solid;
+    outline: none;
+    padding: 10px 15px;
+}
+
+.container_btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.btn_entrar {
+    min-width: 250px;
+    height: 5vh;
+    width: 100%;
+    border-radius: 15px;
+    background-color: #02206b;
+    padding: 15 25;
+    border: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    color: white;
+}
