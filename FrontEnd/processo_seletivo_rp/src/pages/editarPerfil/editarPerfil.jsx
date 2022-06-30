@@ -100,7 +100,7 @@ export default function EditarMeuPerfil() {
                                 </div>
                             </div>
                             <div className="G1_organizar_toggle">
-                                    <label className="G1_label_obrigatoria">Obrigatória</label>
+                                    <label className="G1_label_obrigatoria">Situação</label>
                                     <div className='G1_organizar_switchBtn'>
                                         <input className="checkbox_switch"
                                             type="checkbox"
@@ -114,7 +114,7 @@ export default function EditarMeuPerfil() {
                                             <div>
                                                 <label className='label_switch active' htmlFor="switch2">Toggle</label>
                                                 <p className='text_switch'>
-                                                    SIM
+                                                    ATIVO
                                                 </p>
                                             </div>
                                         )}
@@ -122,7 +122,7 @@ export default function EditarMeuPerfil() {
                                             <div>
                                                 <label className='label_switch' htmlFor="switch2">Toggle</label>
                                                 <p className='text_switch'>
-                                                    NÃO
+                                                    INATIVO
                                                 </p>
                                             </div>
                                         )}

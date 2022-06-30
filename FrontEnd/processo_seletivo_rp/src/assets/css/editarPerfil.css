@@ -274,7 +274,7 @@ font-family: 'Montserrat', sans-serif;
 }
 
 .active {
-    background: #CB334B;
+    background: #02206b;
 }
 
 .active:after {
@@ -299,6 +299,10 @@ font-family: 'Montserrat', sans-serif;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     margin-top: 2%;
+}
+
+.G1_organizar_toggle{
+    width: 100%;
 }
