@@ -10,12 +10,15 @@ import HeaderUsuario from "../../components/header/header";
 export default function Perfil() {
     const [listaUsuarios, setListaUsuario] = useState([])
     const [idUsuario, setIdUsuario] = useState(0)
+    var history = useHistory()
 
-
-
+    function redirecionarTela() {
+        localStorage.setItem('perfil-edit', parseJwt().jti)
+        history.push('/EditarMeuPerfil')
+    }
 
     function listarUsuario() {
-        axios.post('http://localhost:5000/api/Usuarios/BuscarUsuario/' + parseJwt().jti, {
+        axios.post('http://localhost:5000/api/Usuarios/BuscarUsuario/' + localStorage.getItem('perfil-edit'), {
             headers: {
                 Authorization: 'Bearer ' + localStorage.getItem('usuario-login'),
             },
@@ -52,12 +55,12 @@ export default function Perfil() {
 
                             <div className="foto_perfil_g2">
                                 <img src={FtPerfil} alt="Foto Perfil" />
-                                {/* {listaUsuarios.idUsuario} */}
                             </div>
                         </div>
+                        <button onClick={() => {redirecionarTela()}} className="btn_atualizar_perfil">Editar Perfil</button>
                     </div>
 
-                    <div>
+                    <div className="organizar_info">
                         <div>
                             <p className="p_perfil_g2">Informações Gerais </p>
                         </div>

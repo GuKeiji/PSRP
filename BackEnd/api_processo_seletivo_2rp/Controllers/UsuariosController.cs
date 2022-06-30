@@ -23,9 +23,9 @@ namespace api_processo_seletivo_2rp.Controllers
             _usuarioRepository = repo;
         }
 
-        [Authorize(Roles = "1, 2, 3")] 
+        ///[Authorize(Roles = "1, 2, 3")] 
         [HttpPost("Cadastrar")]
-        public IActionResult CadastrarUsuario(UsuarioCadastroViewModel novoUsuario)
+        public IActionResult CadastrarUsuario( UsuarioCadastroViewModel novoUsuario)
         {
             try
             {
@@ -89,9 +89,9 @@ namespace api_processo_seletivo_2rp.Controllers
 
         }
 
-        [Authorize(Roles = "1, 2, 3")]
+        ///[Authorize(Roles = "1, 2, 3")]
         [HttpPut("AtualizarUsuario")]
-        public IActionResult AtualizarUsuario(int idUsuario, [FromForm] UsuarioAtualizadoViewModel usuarioAtualizado)
+        public IActionResult AtualizarUsuario(int idUsuario, UsuarioCadastroViewModel usuarioAtualizado)
         {
             try
             {
@@ -119,7 +119,36 @@ namespace api_processo_seletivo_2rp.Controllers
 
         }
 
-        [Authorize(Roles = "1, 2, 3")]
+        [HttpPatch("AtualizarMeuUsuario/{id}")]
+        public IActionResult AtualizarMeuUsuario(int id, UsuarioAtualizadoViewModel usuarioAtualizado)
+        {
+            try
+            {
+                Usuario usuarioAchado = _usuarioRepository.BuscarUsuario(id);
+                if (usuarioAchado == null)
+                {
+                    return BadRequest(new
+                    {
+                        Mensagem = "Usuário não encontrado!"
+                    });
+                }
+                else
+                {
+                    _usuarioRepository.AlterarMeuUsuario(id, usuarioAtualizado);
+                    return StatusCode(200);
+                }
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+
+        }
+
+        ///[Authorize(Roles = "1, 2, 3")]
         [HttpPut("AlterarStatus")]
         public IActionResult AlterarStatus(int idUsuario)
         {
@@ -149,7 +178,7 @@ namespace api_processo_seletivo_2rp.Controllers
 
         }
 
-        [Authorize(Roles = "3")]
+        ///[Authorize(Roles = "3")]
         [HttpPost("ExcluirUsuario")]
         public IActionResult ExcluirUsuario(int idUsuario)
         {

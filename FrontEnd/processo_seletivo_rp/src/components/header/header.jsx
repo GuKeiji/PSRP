@@ -28,13 +28,12 @@ export default function HeaderUsuario() {
             <div className='container container_header_g2' >
                 <img className='logo_headerr' src={Logo} alt="Logo 2RP" />
                 <div class='select_header_g2'>
-                    <p class='input_header_g2'>Motivações<img src={Seta} /> </p>
+                    <p class='input_header_g2'>Telas<img src={Seta} /> </p>
                     <input type='hidden' name='some_name_to_form' />
                     <div class='hidden_header_g2'>
-                        <Link to='/TodasAtividades' className="text_link_header_g1" ><span>Todas Atividades</span> </Link>
-                        <Link to='/ValidarAtividades' className="text_link_header_g1" ><span>Validar Atividades</span> </Link>
-                        <Link to='/RankingUsuarios' className="text_link_header_g1" ><span>Ranking</span> </Link>
-                        <Link to='/CadastrarAtividades' className="text_link_header_g1" ><span>Cadastrar Atividades</span> </Link>
+                        <Link to='/Perfil' className="text_link_header_g1" onClick={() => {localStorage.setItem('perfil-edit', parseJwt().jti)}} ><span>Meu Perfil</span> </Link>
+                        <Link to='/Cadastro' className="text_link_header_g1" ><span>Cadastro de Usuarios</span> </Link>
+                        <Link to='/VerPerfis' className="text_link_header_g1" ><span>Ver Perfis</span> </Link>
                         <div class='select'>
                         </div>
                     </div>

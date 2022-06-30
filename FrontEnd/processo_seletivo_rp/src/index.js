@@ -13,7 +13,7 @@ import Login from './pages/login/login'
 import reportWebVitals from './reportWebVitals';
 import Perfil from './pages/perfil/meuPerfil';
 import VerPerfis from './pages/verPerfis/verPerfis';
-import editarPerfil from './pages/editarPerfil/editarPerfil';
+import EditarMeuPerfil from './pages/editarPerfil/editarMeuPerfil';
 
 const routing = (
   <Router>
@@ -22,6 +22,8 @@ const routing = (
         <Route exact path="/Login" component={Login} />
         <Route path="/Cadastro" component={CadastroUsuarios} />
         <Route path="/Perfil" component={Perfil} />
+        <Route path="/VerPerfis" component={VerPerfis} />
+        <Route path="/EditarMeuPerfil" component={EditarMeuPerfil} />
       </Switch>
     </div>
   </Router>

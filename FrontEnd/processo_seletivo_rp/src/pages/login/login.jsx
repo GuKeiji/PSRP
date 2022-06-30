@@ -26,7 +26,14 @@ export default function Login() {
             .then(resposta => {
                 if (resposta.status === 200) {
                     localStorage.setItem('usuario-login', resposta.data.token)
-                    history.push('/Cadastro')
+                    if (parseJwt().role == 1) {
+                        history.push('/Perfil')
+                    }
+                    else if (parseJwt().role == 2 || parseJwt().role == 3) {
+                        history.push('/Cadastro')
+                    }
+                    
+                    
                 }
 
             })

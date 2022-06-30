@@ -15,6 +15,19 @@ namespace api_processo_seletivo_2rp.Repositories
     {
         Ps_Context ctx = new Ps_Context();
 
+        public void AlterarMeuUsuario(int idUsuario, UsuarioAtualizadoViewModel usuarioAtualizado)
+        {
+            Usuario usuarioAchado = BuscarUsuario(idUsuario);
+
+            if (usuarioAchado != null)
+            {
+                usuarioAchado.Nome = usuarioAtualizado.Nome;
+                usuarioAchado.Email = usuarioAtualizado.Email;
+                usuarioAchado.Senha = usuarioAtualizado.Senha;
+                ctx.SaveChanges();
+            }
+        }
+
         public void AlterarSituacao(int idUsuario)
         {
             Usuario usuarioAchado = BuscarUsuario(idUsuario);
@@ -34,7 +47,7 @@ namespace api_processo_seletivo_2rp.Repositories
             }
         }
 
-        public void AlterarUsuario(int idUsuario, UsuarioAtualizadoViewModel usuarioAtualizado)
+        public void AlterarUsuario(int idUsuario, UsuarioCadastroViewModel usuarioAtualizado)
         {
             Usuario usuarioAchado = BuscarUsuario(idUsuario);
 
@@ -42,6 +55,9 @@ namespace api_processo_seletivo_2rp.Repositories
             {
                 usuarioAchado.Nome = usuarioAtualizado.Nome;
                 usuarioAchado.IdTipoUsuario = (byte?)usuarioAtualizado.IdTipoUsuario;
+                usuarioAchado.Email = usuarioAtualizado.Email;
+                usuarioAchado.Situacao = usuarioAtualizado.Situacao;
+                usuarioAchado.Senha = usuarioAtualizado.Senha;
                 ctx.SaveChanges();
             }
         }
