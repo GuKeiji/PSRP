@@ -8,23 +8,24 @@ import FtPerfil from '../../assets/img/perfil.svg';
 import HeaderUsuario from "../../components/header/header";
 
 export default function VerPerfis() {
-    const [listaAtividades, setListaAtividades] = useState([]);
-    const [idAtividade, setIdAtividade] = useState('');
+    const [listaUsuarios, setListaUsuarios] = useState([]);
+    const [idUsuario, setIdUsuario] = useState('');
     const [showModal, setShowModal] = useState(false);
     const [showModalValidar, setShowModalValidar] = useState(false);
     const [idAtividadeModal, setIdAtividadeModal] = useState()
     const [isLoading, setIsLoading] = useState(false);
 
+
     var history = useHistory()
 
-    function redirecionarTela() {
-        localStorage.setItem('perfil-edit', parseJwt().jti)
+    function redirecionarTela(id) {
+        localStorage.setItem('perfil-edit', id)
         history.push('/EditarPerfil')
     }
 
 
-    function listarAtividades() {
-        axios.get("http://apirhsenaigp1.azurewebsites.net/api/Atividades"
+    function listarUsuarios() {
+        axios.get("http://localhost:5000/api/Usuarios/ListarTodas"
             , {
                 headers: {
                     'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
@@ -33,9 +34,7 @@ export default function VerPerfis() {
             .then(resposta => {
                 if (resposta.status === 200) {
                     let lista = resposta.data
-
-                    let listaAtualizada = lista.filter(a => a.idGestorCadastro == parseJwt().jti)
-                    setListaAtividades(listaAtualizada)
+                    setListaUsuarios(lista)
                     console.log(resposta.data)
                 }
             })
@@ -44,37 +43,47 @@ export default function VerPerfis() {
     };
 
 
-    useEffect(listarAtividades, []);
+    useEffect(listarUsuarios, []);
 
     return (
         <div className="div_container G1_tela_atividades_container">
-            <Modall atividade={listaAtividades.find(atividade => atividade.idAtividade == idAtividadeModal)} showModal={showModal} setShowModal={setShowModal} />
-            <div className='navbarF'>
-                <Navbar />
-            </div>
-            <div className='headerF'>
-                <HeaderFuncionario />
-            </div>
+            <HeaderUsuario />
             <main className="container_atividades">
                 <div className="G1_organizar_main">
-                    <h1 className="G1_titulo_atividades">Todas Atividades</h1>
+                    <h1 className="G1_titulo_atividades">Todos Usuarios</h1>
                     <div className="G1_container_atividades">
-                        {listaAtividades.map((atividade) => {
+                        {listaUsuarios.map((usuario) => {
                             return (
-                                <div key={atividade.idAtividade}>
+                                <div key={usuario.idUsuario}>
                                     <div className="G1_atividade_box">
-                                        <div className="G1_header_atividade"></div>
+                                        {/* <div className="G1_header_atividade"></div> */}
                                         <div className="G1_box_container">
                                             <div className="G1_organizar_spams">
-                                                <span className="G1_titulo_atividade_box">{atividade.nomeAtividade}</span>
-                                                <div className="organiza_coins_text">
-                                                    <span className="G1_recompensa_box">{atividade.recompensaMoeda} CashS</span>
-                                                    <img className="img_coins" src={moedas} alt="moedas" />
+                                                <div className="container_spans">
+                                                    <span className="G1_titulo_atividade_box">Nome</span>
+                                                    <span className="G1_titulo_atividade_box">{usuario.nome}</span>
                                                 </div>
+                                                <div className="container_spans">
+                                                    <span className="G1_titulo_atividade_box">Email</span>
+                                                    <span className="G1_titulo_atividade_box">{usuario.email}</span>
+                                                </div>
+                                                <div className="container_spans">
+                                                    <span className="G1_titulo_atividade_box">Tipo de Usuario</span>
+                                                    <span className="G1_titulo_atividade_box">{usuario.idTipoUsuarioNavigation.tipo}</span>
+                                                </div>
+                                                <div className="container_spans">
+                                                    <span className="G1_titulo_atividade_box">Situação</span>
+                                                    {usuario.situacao == true && (
+                                                        <span className="G1_titulo_atividade_box">Ativo</span>
+                                                    )}
+                                                    {usuario.situacao == false && (
+                                                        <span className="G1_titulo_atividade_box">Inativo</span>
+                                                    )}
+                                                </div>
+
                                             </div>
-                                            <p className="G1_descricao_atividade">{atividade.descricaoAtividade}</p>
                                             <div className="G1_organizar_btn">
-                                                <button onClick={redirecionarTela} onClickCapture={() => setIdAtividadeModal(atividade.idAtividade)} className="G1_btn_vizualizar">Visualizar</button>
+                                                <button onClick={() => { redirecionarTela(usuario.idUsuario) }} className="G1_btn_vizualizar">Visualizar</button>
                                             </div>
                                         </div>
                                     </div>
@@ -84,7 +93,6 @@ export default function VerPerfis() {
                     </div>
                 </div>
             </main>
-            <Footer />
         </div>
     );
 }
