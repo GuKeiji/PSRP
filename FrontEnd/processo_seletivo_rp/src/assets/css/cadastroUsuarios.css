@@ -1,0 +1,242 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
+@import url(https://fonts.googleapis.com/css?family=Ubuntu);
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+
+
+* {
+    box-sizing: 0;
+    margin: 0;
+    padding: 0;
+}
+
+/* ==============================   Cadastrar Atividades   ===============================================    */
+
+.div_container{
+    overflow-x: hidden;
+    background-image: url(https://www.2rpnet.com.br/media/solucoes/backgrounds/solucoes.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.container_ {
+    display: flex;
+    height: 100vh;
+}
+
+.G1_Left_CadastroAtividade {
+    /* background-color: #F2F2F2; */
+    width: 50vw;
+    height: 100vh;
+}
+
+.G1_Right_CadastroAtividade {
+    display: flex;
+    flex-direction: column;
+    /* background-color: #f2f2f2; */
+    width: 50vw;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.G1_banner_CadastroAtividade {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin-left: 10vw;
+    height: 100%;
+}
+
+.G1_logo_CadastroAtividade {
+    width: 15vw;
+
+}
+
+.G1_bannerCadastroAtividade {
+    width: 35vw;
+
+}
+
+.G1_banner_text {
+    color: #636466
+}
+
+
+.G1_textCadastrar {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 33vw;
+    margin-bottom: 5vh;
+}
+
+.G1_textCadastrar h1 {
+    text-transform: uppercase;
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 50px;
+    margin: 0;
+}
+
+.G1_textCadastrar h2 {
+    color: #ffffff;
+    font-family: 'Montserrat', sans-serif;
+    max-width: 350px;
+    font-weight: 300;
+    font-size: 40px;
+    text-transform: uppercase;
+}
+
+.G1_form_Cadastrar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 42vh;
+    width: 33vw;
+    background-color: #ffffff;
+    padding: 0 3%;
+    border-radius: 15px;
+}
+
+.G1_organizar_form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.G1_organizar_inputs {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.G1_btn_modal {
+    min-width: 250px;
+    width: 16vw;
+    height: 5vh;
+    margin-top: 2vh;
+    border-radius: 15px;
+    background-color: #636466;
+    padding: 15 25;
+    border: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    color: white;
+}
+
+.G1_inputLabel_Cadastrar {
+    position: relative;
+    padding-top: 13px;
+}
+
+.G1_inputLabel_Cadastrar input {
+    border: 1px solid lightgrey;
+    border-radius: 15px;
+    background-color: #ffffff;
+    outline: none;
+    /* min-width: 250px; */
+    width: 14.7vw;
+    height: 6vh;
+    padding: 15px 20px;
+    font-size: 16px;
+    transition: all .1s linear;
+    -webkit-transition: all .1s linear;
+    -moz-transition: all .1s linear;
+    -webkit-appearance: none;
+}
+
+.G1_inputLabel_Cadastrar input::placeholder {
+    color: transparent;
+}
+
+.G1_inputLabel_Cadastrar label {
+    pointer-events: none;
+    position: absolute;
+    top: calc(50% - 8px);
+    left: 15px;
+    transition: all .1s linear;
+    -webkit-transition: all .1s linear;
+    -moz-transition: all .1s linear;
+    background-color: #ffffff;
+    padding: 5px;
+    font-family: 'Montserrat', sans-serif;
+    box-sizing: border-box;
+}
+
+
+.G1_inputLabel_Cadastrar input:required:invalid+label {
+    color: red;
+}
+
+
+.G1_inputLabel_Cadastrar input:focus:required:invalid {
+    border: 2px solid red;
+}
+
+.G1_inputLabel_Cadastrar input:required:invalid+label:before {
+    content: '*';
+}
+
+.G1_inputLabel_Cadastrar input:focus+label,
+.G1_inputLabel_Cadastrar input:not(:placeholder-shown)+label {
+    font-size: 13px;
+    top: 0;
+
+}
+
+.G1_div_ToggleValidar {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.G1_label_precisaValidar {
+font-family: 'Montserrat', sans-serif;
+    width: 100%;
+    display: block;
+}
+
+.G1_label_obrigatoria {
+font-family: 'Montserrat', sans-serif;
+    width: 100%;
+}
+
+
+
+.G1_btn_modal {
+    min-width: 250px;
+    width: 100%;
+    height: 5vh;
+    margin-top: 2vh;
+    border-radius: 15px;
+    background-color: #636466;
+    padding: 15 25;
+    border: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    color: white;
+
+}
+
+.G1_btn_Cadastrar {
+    min-width: 250px;
+    width: 25vw;
+    height: 5vh;
+    border-radius: 15px;
+    background-color: #02206b;
+    padding: 15 25;
+    border: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    color: white;
+}
+
+.G1_p_2RP {
+    font-family: 'Quicksand', sans-serif;
+    color: #ffffff;
+}

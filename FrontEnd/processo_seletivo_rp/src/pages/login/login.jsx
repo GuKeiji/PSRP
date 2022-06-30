@@ -26,7 +26,6 @@ export default function Login() {
             .then(resposta => {
                 if (resposta.status === 200) {
                     localStorage.setItem('usuario-login', resposta.data.token)
-                    console.log('chegueiiiiiii')
                     history.push('/Cadastro')
                 }
 

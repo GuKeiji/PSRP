@@ -11,14 +11,17 @@ import {
 import CadastroUsuarios from './pages/cadastroUsuarios/cadastroUsuarios'
 import Login from './pages/login/login'
 import reportWebVitals from './reportWebVitals';
-
+import Perfil from './pages/perfil/meuPerfil';
+import VerPerfis from './pages/verPerfis/verPerfis';
+import editarPerfil from './pages/editarPerfil/editarPerfil';
 
 const routing = (
   <Router>
     <div>
       <Switch>
         <Route exact path="/Login" component={Login} />
-        {/* <Route path="/Cadastro" component={CadastroUsuarios} /> */}
+        <Route path="/Cadastro" component={CadastroUsuarios} />
+        <Route path="/Perfil" component={Perfil} />
       </Switch>
     </div>
   </Router>

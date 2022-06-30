@@ -75,8 +75,8 @@ namespace api_processo_seletivo_2rp
                         ValidateLifetime = true,
                         IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("psrp-autenticacao-token")),
                         ClockSkew = TimeSpan.FromMinutes(30),
-                        ValidIssuer = "PSRP.WebApi",
-                        ValidAudience = "PSRP.WebApi"
+                        ValidIssuer = "PSRP_WebApi",
+                        ValidAudience = "PSRP_WebApi"
                     };
                 });
 
@@ -110,8 +110,6 @@ namespace api_processo_seletivo_2rp
             app.UseRouting();
 
             app.UseCors("CorsPolicy");
-
-
 
             app.UseAuthentication();
 

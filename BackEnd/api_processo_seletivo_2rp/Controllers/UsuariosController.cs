@@ -23,7 +23,7 @@ namespace api_processo_seletivo_2rp.Controllers
             _usuarioRepository = repo;
         }
 
-        [Authorize(Roles = "2, 3")] 
+        [Authorize(Roles = "1, 2, 3")] 
         [HttpPost("Cadastrar")]
         public IActionResult CadastrarUsuario(UsuarioCadastroViewModel novoUsuario)
         {
@@ -51,14 +51,14 @@ namespace api_processo_seletivo_2rp.Controllers
 
         }
 
-        [HttpPost("BuscarUsuario")]
-        public IActionResult BuscarUsuario(int idUsuario)
+        [HttpPost("BuscarUsuario/{id}")]
+        public IActionResult BuscarUsuario(int id)
         {
             try
             {
-                if (idUsuario > 0)
+                if (id > 0)
                 {
-                    Usuario usuarioEncontrado = _usuarioRepository.BuscarUsuario(idUsuario);
+                    Usuario usuarioEncontrado = _usuarioRepository.BuscarUsuario(id);
                     if (usuarioEncontrado == null)
                     {
                         return BadRequest(new
@@ -89,7 +89,7 @@ namespace api_processo_seletivo_2rp.Controllers
 
         }
 
-        [Authorize(Roles = "2, 3")]
+        [Authorize(Roles = "1, 2, 3")]
         [HttpPut("AtualizarUsuario")]
         public IActionResult AtualizarUsuario(int idUsuario, [FromForm] UsuarioAtualizadoViewModel usuarioAtualizado)
         {
@@ -119,7 +119,7 @@ namespace api_processo_seletivo_2rp.Controllers
 
         }
 
-        [Authorize(Roles = "2, 3")]
+        [Authorize(Roles = "1, 2, 3")]
         [HttpPut("AlterarStatus")]
         public IActionResult AlterarStatus(int idUsuario)
         {
