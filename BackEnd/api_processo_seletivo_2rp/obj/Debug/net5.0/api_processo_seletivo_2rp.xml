@@ -4,17 +4,5 @@
         <name>api_processo_seletivo_2rp</name>
     </assembly>
     <members>
-        <member name="M:api_processo_seletivo_2rp.Controllers.UsuariosController.CadastrarUsuario(api_processo_seletivo_2rp.ViewModels.UsuarioCadastroViewModel)">
-            [Authorize(Roles = "1, 2, 3")] 
-        </member>
-        <member name="M:api_processo_seletivo_2rp.Controllers.UsuariosController.AtualizarUsuario(System.Int32,api_processo_seletivo_2rp.ViewModels.UsuarioCadastroViewModel)">
-            [Authorize(Roles = "1, 2, 3")]
-        </member>
-        <member name="M:api_processo_seletivo_2rp.Controllers.UsuariosController.AlterarStatus(System.Int32)">
-            [Authorize(Roles = "1, 2, 3")]
-        </member>
-        <member name="M:api_processo_seletivo_2rp.Controllers.UsuariosController.ExcluirUsuario(System.Int32)">
-            [Authorize(Roles = "3")]
-        </member>
     </members>
 </doc>

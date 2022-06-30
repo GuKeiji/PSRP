@@ -23,7 +23,7 @@ namespace api_processo_seletivo_2rp.Controllers
             _usuarioRepository = repo;
         }
 
-        ///[Authorize(Roles = "1, 2, 3")] 
+        [Authorize(Roles = "2, 3")] 
         [HttpPost("Cadastrar")]
         public IActionResult CadastrarUsuario( UsuarioCadastroViewModel novoUsuario)
         {
@@ -89,7 +89,7 @@ namespace api_processo_seletivo_2rp.Controllers
 
         }
 
-        ///[Authorize(Roles = "1, 2, 3")]
+        [Authorize(Roles = "2, 3")]
         [HttpPut("AtualizarUsuario/{id}")]
         public IActionResult AtualizarUsuario(int id, UsuarioCadastroViewModel usuarioAtualizado)
         {
@@ -148,7 +148,7 @@ namespace api_processo_seletivo_2rp.Controllers
 
         }
 
-        ///[Authorize(Roles = "1, 2, 3")]
+        [Authorize(Roles = "2, 3")]
         [HttpPut("AlterarStatus")]
         public IActionResult AlterarStatus(int idUsuario)
         {
@@ -178,7 +178,7 @@ namespace api_processo_seletivo_2rp.Controllers
 
         }
 
-        ///[Authorize(Roles = "3")]
+        [Authorize(Roles = "3")]
         [HttpPost("ExcluirUsuario")]
         public IActionResult ExcluirUsuario(int idUsuario)
         {

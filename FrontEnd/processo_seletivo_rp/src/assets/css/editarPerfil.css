@@ -9,7 +9,7 @@
     padding: 0;
 }
 
-/* ==============================   Cadastrar Atividades   ===============================================    */
+/* ==============================   Editar Usuarios   ===============================================    */
 
 .div_container{
     overflow-x: hidden;
@@ -239,4 +239,66 @@ font-family: 'Montserrat', sans-serif;
 .G1_p_2RP {
     font-family: 'Quicksand', sans-serif;
     color: #ffffff;
+}
+
+/* ==============================   Switch Button   ===============================================    */
+
+.checkbox_switch {
+    height: 0;
+    width: 0;
+    visibility: hidden;
+}
+
+.label_switch {
+    cursor: pointer;
+    text-indent: -9999px;
+    width: 40px;
+    height: 26px;
+    background: grey;
+    display: block;
+    border-radius: 100px;
+    position: relative;
+    /* margin-bottom: 19px; */
+}
+
+.label_switch:after {
+    content: '';
+    position: absolute;
+    top: 6px;
+    left: 5px;
+    width: 15px;
+    height: 15px;
+    background: #fff;
+    border-radius: 90px;
+    transition: 0.3s;
+}
+
+.active {
+    background: #CB334B;
+}
+
+.active:after {
+    left: calc(100% - 5px);
+    transform: translateX(-100%);
+}
+
+.text_switch {
+    margin-top: 5px;
+    font-weight: 500;
+    font-family: 'Montserrat', sans-serif;
+    color: #000000;
+    font-size: 10px;
+    text-align: center;
+    /* margin-left: 6px; */
+}
+
+.G1_organizar_switchBtn {
+    /* background-color: #08b810; */
+    /* height: 100%; */
+    width: 44%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2%;
 }

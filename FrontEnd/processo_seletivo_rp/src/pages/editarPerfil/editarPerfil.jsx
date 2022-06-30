@@ -12,7 +12,7 @@ export default function EditarMeuPerfil() {
     const [idTipoUsuario, setIdTipoUsuario] = useState('');
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
-    const [situacao, setSituacao] = useState();
+    const [situacao, setSituacao] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
 
     async function EditarPerfil(evento) {
@@ -41,6 +41,7 @@ export default function EditarMeuPerfil() {
                         setIdTipoUsuario('');
                         setEmail('');
                         setSenha('');
+                        setSituacao(false);
                     }
 
                 })
@@ -49,6 +50,10 @@ export default function EditarMeuPerfil() {
         else {
             setIsLoading(false);
         }
+    }
+
+    function checkSituacao() {
+        setSituacao(!situacao)
     }
 
     return (
@@ -94,6 +99,35 @@ export default function EditarMeuPerfil() {
                                     </div>
                                 </div>
                             </div>
+                            <div className="G1_organizar_toggle">
+                                    <label className="G1_label_obrigatoria">Obrigatória</label>
+                                    <div className='G1_organizar_switchBtn'>
+                                        <input className="checkbox_switch"
+                                            type="checkbox"
+                                            id="switch2"
+                                            name="obrigatorio"
+                                            value={situacao}
+                                            onClick={checkSituacao}
+                                        />
+                                        {/* <label className='label_switch' htmlFor="switch2">Toggle</label> */}
+                                        {situacao && (
+                                            <div>
+                                                <label className='label_switch active' htmlFor="switch2">Toggle</label>
+                                                <p className='text_switch'>
+                                                    SIM
+                                                </p>
+                                            </div>
+                                        )}
+                                        {!situacao && (
+                                            <div>
+                                                <label className='label_switch' htmlFor="switch2">Toggle</label>
+                                                <p className='text_switch'>
+                                                    NÃO
+                                                </p>
+                                            </div>
+                                        )}
+                                    </div>
+                                </div>
                             {isLoading && (
                                 <button className='G1_btn_Cadastrar' type="submit" >Carregando...</button>
                             )}

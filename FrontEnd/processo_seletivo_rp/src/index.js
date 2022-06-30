@@ -20,7 +20,8 @@ const routing = (
   <Router>
     <div>
       <Switch>
-        <Route exact path="/Login" component={Login} />
+        <Route exact path="/" component={Login} />
+        <Route path="/Login" component={Login} />
         <Route path="/Cadastro" component={CadastroUsuarios} />
         <Route path="/Perfil" component={Perfil} />
         <Route path="/VerPerfis" component={VerPerfis} />
