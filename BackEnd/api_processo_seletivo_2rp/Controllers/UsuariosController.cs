@@ -23,6 +23,23 @@ namespace api_processo_seletivo_2rp.Controllers
             _usuarioRepository = repo;
         }
 
+        [HttpGet("ListarTodas")]
+        public IActionResult GetAtividades()
+        {
+
+            try
+            {
+                List<Usuario> listaAtividade = _usuarioRepository.ListarTodos();
+
+                return Ok(listaAtividade);
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
+        }
+
         [Authorize(Roles = "2, 3")] 
         [HttpPost("Cadastrar")]
         public IActionResult CadastrarUsuario( UsuarioCadastroViewModel novoUsuario)

@@ -93,6 +93,24 @@ namespace api_processo_seletivo_2rp.Repositories
             ctx.SaveChanges();
         }
 
+        public List<Usuario> ListarTodos()
+        {
+            return ctx.Usuarios
+                .Select(a => new Usuario()
+                {
+                    Nome = a.Nome,
+                    Email = a.Email,
+                    IdUsuario = a.IdUsuario,
+                    Situacao = a.Situacao,
+                    IdTipoUsuarioNavigation = new Tipousuario()
+                    {
+                        Tipo = a.IdTipoUsuarioNavigation.Tipo,
+                        IdTipoUsuario = a.IdTipoUsuarioNavigation.IdTipoUsuario
+                    }
+                })
+                .ToList();
+        }
+
         public Usuario Login(string email, string senha)
         {
             var usuario = ctx.Usuarios.FirstOrDefault(u => u.Email == email);
