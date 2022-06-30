@@ -90,12 +90,12 @@ namespace api_processo_seletivo_2rp.Controllers
         }
 
         ///[Authorize(Roles = "1, 2, 3")]
-        [HttpPut("AtualizarUsuario")]
-        public IActionResult AtualizarUsuario(int idUsuario, UsuarioCadastroViewModel usuarioAtualizado)
+        [HttpPut("AtualizarUsuario/{id}")]
+        public IActionResult AtualizarUsuario(int id, UsuarioCadastroViewModel usuarioAtualizado)
         {
             try
             {
-                Usuario usuarioAchado = _usuarioRepository.BuscarUsuario(idUsuario);
+                Usuario usuarioAchado = _usuarioRepository.BuscarUsuario(id);
                 if (usuarioAchado == null)
                 {
                     return BadRequest(new
@@ -105,7 +105,7 @@ namespace api_processo_seletivo_2rp.Controllers
                 }
                 else
                 {
-                    _usuarioRepository.AlterarUsuario(idUsuario, usuarioAtualizado);
+                    _usuarioRepository.AlterarUsuario(id, usuarioAtualizado);
                     return StatusCode(200);
                 }
 

@@ -103,8 +103,7 @@
 .G1_organizar_form {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     width: 100%;
 }
 
@@ -128,19 +127,18 @@
     color: white;
 }
 
-.EMP_inputLabel_Cadastrar {
+.G1_inputLabel_Cadastrar {
     position: relative;
     padding-top: 13px;
-
 }
 
-.EMP_inputLabel_Cadastrar input {
+.G1_inputLabel_Cadastrar input {
     border: 1px solid lightgrey;
     border-radius: 15px;
     background-color: #ffffff;
     outline: none;
     /* min-width: 250px; */
-    width: 25vw;
+    width: 14.7vw;
     height: 6vh;
     padding: 15px 20px;
     font-size: 16px;
@@ -150,11 +148,11 @@
     -webkit-appearance: none;
 }
 
-.EMP_inputLabel_Cadastrar input::placeholder {
+.G1_inputLabel_Cadastrar input::placeholder {
     color: transparent;
 }
 
-.EMP_inputLabel_Cadastrar label {
+.G1_inputLabel_Cadastrar label {
     pointer-events: none;
     position: absolute;
     top: calc(50% - 8px);
@@ -169,21 +167,21 @@
 }
 
 
-.EMP_inputLabel_Cadastrar input:required:invalid+label {
+.G1_inputLabel_Cadastrar input:required:invalid+label {
     color: red;
 }
 
 
-.EMP_inputLabel_Cadastrar input:focus:required:invalid {
+.G1_inputLabel_Cadastrar input:focus:required:invalid {
     border: 2px solid red;
 }
 
-.EMP_inputLabel_Cadastrar input:required:invalid+label:before {
+.G1_inputLabel_Cadastrar input:required:invalid+label:before {
     content: '*';
 }
 
-.EMP_inputLabel_Cadastrar input:focus+label,
-.EMP_inputLabel_Cadastrar input:not(:placeholder-shown)+label {
+.G1_inputLabel_Cadastrar input:focus+label,
+.G1_inputLabel_Cadastrar input:not(:placeholder-shown)+label {
     font-size: 13px;
     top: 0;
 

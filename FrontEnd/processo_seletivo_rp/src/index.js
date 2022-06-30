@@ -14,6 +14,7 @@ import reportWebVitals from './reportWebVitals';
 import Perfil from './pages/perfil/meuPerfil';
 import VerPerfis from './pages/verPerfis/verPerfis';
 import EditarMeuPerfil from './pages/editarPerfil/editarMeuPerfil';
+import EditarPerfil from './pages/editarPerfil/editarPerfil';
 
 const routing = (
   <Router>
@@ -24,6 +25,7 @@ const routing = (
         <Route path="/Perfil" component={Perfil} />
         <Route path="/VerPerfis" component={VerPerfis} />
         <Route path="/EditarMeuPerfil" component={EditarMeuPerfil} />
+        <Route path="/EditarPerfil" component={EditarPerfil} />
       </Switch>
     </div>
   </Router>
