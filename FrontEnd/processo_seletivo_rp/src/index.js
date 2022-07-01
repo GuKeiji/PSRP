@@ -16,6 +16,59 @@ import VerPerfis from './pages/verPerfis/verPerfis';
 import EditarMeuPerfil from './pages/editarPerfil/editarMeuPerfil';
 import EditarPerfil from './pages/editarPerfil/editarPerfil';
 import Perfil from './pages/perfil/perfil';
+import { parseJwt, usuarioAutenticado } from './services/auth'; 
+
+const Logado = ({ component: Component }) => (
+  <Route
+    render={(props) =>
+      usuarioAutenticado() ?  (
+        <Component {...props} />
+      ) : (
+        <Redirect to="Login" />
+      )
+    }
+  />
+);
+
+const PermissaoAdm = ({ component: Component }) => (
+  <Route
+    render={(props) =>
+      usuarioAutenticado() && parseJwt().role === "2" ? (
+        <Component {...props} />
+      ) : (
+        <Redirect to="Login" />
+      )
+    }
+  />
+);
+
+const PermissaoRoot = ({ component: Component }) => (
+  <Route
+    render={(props) =>
+      usuarioAutenticado() && parseJwt().role === "3" ? (
+        <Component {...props} />
+      ) : (
+        <Redirect to="Login" />
+      )
+    }
+  />
+);
+
+const PermissaoAdmRoot = ({ component: Component }) => (
+  <Route
+    render={(props) =>
+      usuarioAutenticado() && parseJwt().role === "2" || usuarioAutenticado() && parseJwt().role === "3" ? (
+        <Component {...props} />
+      ) : (
+        <Redirect to="Login" />
+      )
+    }
+  />
+);
+
+
+
+
 
 
 const routing = (
@@ -24,12 +77,12 @@ const routing = (
       <Switch>
         <Route exact path="/" component={Login} />
         <Route path="/Login" component={Login} />
-        <Route path="/Cadastro" component={CadastroUsuarios} />
-        <Route path="/MeuPerfil" component={MeuPerfil} />
-        <Route path="/VerPerfis" component={VerPerfis} />
-        <Route path="/EditarMeuPerfil" component={EditarMeuPerfil} />
-        <Route path="/EditarPerfil" component={EditarPerfil} />
-        <Route path="/Perfil" component={Perfil} />
+        <PermissaoAdmRoot path="/Cadastro" component={CadastroUsuarios} />
+        <Logado path="/MeuPerfil" component={MeuPerfil} />
+        <PermissaoAdmRoot path="/VerPerfis" component={VerPerfis} />
+        <Logado path="/EditarMeuPerfil" component={EditarMeuPerfil} />
+        <PermissaoAdmRoot path="/EditarPerfil" component={EditarPerfil} />
+        <PermissaoAdmRoot path="/Perfil" component={Perfil} />
       </Switch>
     </div>
   </Router>

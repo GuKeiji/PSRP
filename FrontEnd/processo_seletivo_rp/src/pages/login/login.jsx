@@ -28,7 +28,7 @@ export default function Login() {
                     localStorage.setItem('usuario-login', resposta.data.token)
                     localStorage.setItem('perfil-edit', parseJwt().jti);
                     if (parseJwt().role == 1) {
-                        history.push('/Perfil')
+                        history.push('/MeuPerfil')
                     }
                     else if (parseJwt().role == 2 || parseJwt().role == 3) {
                         history.push('/Cadastro')
