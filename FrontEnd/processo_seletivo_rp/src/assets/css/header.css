@@ -86,7 +86,7 @@ div.select_header_g2 {
 
 
 .text_link_header_g2 span:hover{
-    color: #c20004;
+    color: #02206b;
     transform: scale(1.05);
     background-color: #fff !important;
 }
@@ -215,7 +215,7 @@ table {
   
   
   .text_link_header_g1 span:hover{
-      color: #c20004;
+      color: #02206b;
       transform: scale(1.05);
       background-color: #fff !important;
   }
@@ -242,7 +242,7 @@ table {
         
         
         .text_link_header_g1 span:hover{
-            color: #c20004;
+            color: #02206b;
             transform: scale(1.05);
             background-color: #fff !important;
         }

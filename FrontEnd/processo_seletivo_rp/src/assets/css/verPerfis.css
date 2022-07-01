@@ -133,7 +133,7 @@
 
 .G1_organizar_btn {
     display: flex;
-    justify-content: start;
+    justify-content: space-between;
     width: 100%;
 }
 

@@ -16,6 +16,7 @@
     background-image: url(https://www.2rpnet.com.br/media/solucoes/backgrounds/solucoes.jpg);
     background-repeat: no-repeat;
     background-size: cover;
+    height: 100vh;
 }
 
 .container_ {
