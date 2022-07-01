@@ -196,14 +196,14 @@ namespace api_processo_seletivo_2rp.Controllers
         }
 
         [Authorize(Roles = "3")]
-        [HttpPost("ExcluirUsuario")]
-        public IActionResult ExcluirUsuario(int idUsuario)
+        [HttpPost("ExcluirUsuario/{id}")]
+        public IActionResult ExcluirUsuario(int id)
         {
             try
             {
-                if(idUsuario > 0)
+                if(id > 0)
                 {
-                    Usuario usuarioEncontrado = _usuarioRepository.BuscarUsuario(idUsuario);
+                    Usuario usuarioEncontrado = _usuarioRepository.BuscarUsuario(id);
                     if (usuarioEncontrado == null)
                     {
                         return BadRequest(new
@@ -214,7 +214,7 @@ namespace api_processo_seletivo_2rp.Controllers
                     else
                     {
 
-                        _usuarioRepository.ExcluirUsuario(idUsuario);
+                        _usuarioRepository.ExcluirUsuario(id);
                         return StatusCode(200);
 
                     }

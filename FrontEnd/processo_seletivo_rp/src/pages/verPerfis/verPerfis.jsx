@@ -14,15 +14,48 @@ export default function VerPerfis() {
     const [showModalValidar, setShowModalValidar] = useState(false);
     const [idAtividadeModal, setIdAtividadeModal] = useState()
     const [isLoading, setIsLoading] = useState(false);
+    const [verifyRole, setVerifyRole] = useState(parseJwt().role);
+
 
 
     var history = useHistory()
 
     function redirecionarTela(id) {
         localStorage.setItem('perfil-edit', id)
-        history.push('/EditarPerfil')
+        history.push('/Perfil')
     }
 
+    function excluirUsuario(id) {
+        // debugger;
+        // console.log(id);
+        // console.log(parseJwt().role);
+        // console.log(parseJwt());
+        // console.log(localStorage.getItem('usuario-login'));
+        axios.post("http://localhost:5000/api/Usuarios/ExcluirUsuario/" + id
+            , {} , {
+                headers: {
+                    'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
+                }
+            })
+            .then(resposta => {
+                if (resposta.status === 200) {
+                    listarUsuarios()
+                }
+            })
+
+            .catch(erro => console.log(erro))
+        // axios.post("http://localhost:5000/api/Usuarios/ExcluirUsuario/" + id
+        //     , {
+        //         headers: {
+        //             'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
+        //         }
+        //     })
+        //     .then(resposta => {
+        //         if (resposta.status === 200) {
+        //             listarUsuarios()
+        //         }
+        //     })
+    }
 
     function listarUsuarios() {
         axios.get("http://localhost:5000/api/Usuarios/ListarTodas"
@@ -84,6 +117,9 @@ export default function VerPerfis() {
                                             </div>
                                             <div className="G1_organizar_btn">
                                                 <button onClick={() => { redirecionarTela(usuario.idUsuario) }} className="G1_btn_vizualizar">Visualizar</button>
+                                                {verifyRole == 3 && (
+                                                    <button onClick={() => { excluirUsuario(usuario.idUsuario) }} className="G1_btn_vizualizar">Excluir</button>
+                                                )}
                                             </div>
                                         </div>
                                     </div>

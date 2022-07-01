@@ -22,6 +22,13 @@ export default function HeaderUsuario() {
 
         history.push("/Login");
     }
+    // async function redirecionaTela() {
+    //     localStorage.setItem('perfil-edit', parseJwt().jti);
+
+    //     history.push("/MeuPerfil");
+    // }
+
+
 
     return (
         <header className="header_g2">
@@ -31,7 +38,7 @@ export default function HeaderUsuario() {
                     <p class='input_header_g2'>Telas<img src={Seta} /> </p>
                     <input type='hidden' name='some_name_to_form' />
                     <div class='hidden_header_g2'>
-                        <Link to='/Perfil' className="text_link_header_g1" onClick={() => {localStorage.setItem('perfil-edit', parseJwt().jti)}} ><span>Meu Perfil</span> </Link>
+                        <Link to='/MeuPerfil' className="text_link_header_g1" ><span>Meu Perfil</span> </Link>
                         <Link to='/Cadastro' className="text_link_header_g1" ><span>Cadastro de Usuarios</span> </Link>
                         <Link to='/VerPerfis' className="text_link_header_g1" ><span>Ver Perfis</span> </Link>
                         <div class='select'>
@@ -40,7 +47,7 @@ export default function HeaderUsuario() {
                 </div>
 
                 <div className="img_perfil_g2" >
-                    <Link to="/perfil"> <img src={Perfil} alt="Foto de Perfil" /></Link>
+                    <Link to='/MeuPerfil' > <img src={Perfil} alt="Foto de Perfil" /></Link>
                 </div>
 
 

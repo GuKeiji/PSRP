@@ -7,18 +7,17 @@ import { parseJwt } from "../../services/auth";
 import FtPerfil from '../../assets/img/perfil.svg';
 import HeaderUsuario from "../../components/header/header";
 
-export default function MeuPerfil() {
+export default function Perfil() {
     const [listaUsuarios, setListaUsuario] = useState([])
     const [idUsuario, setIdUsuario] = useState(0)
     var history = useHistory()
 
     function redirecionarTela() {
-        localStorage.setItem('perfil-edit', parseJwt().jti)
-        history.push('/EditarMeuPerfil')
+        history.push('/EditarPerfil')
     }
 
     function listarUsuario() {
-        axios.post('http://localhost:5000/api/Usuarios/BuscarUsuario/' + parseJwt().jti, {
+        axios.post('http://localhost:5000/api/Usuarios/BuscarUsuario/' + localStorage.getItem('perfil-edit'), {
             headers: {
                 Authorization: 'Bearer ' + localStorage.getItem('usuario-login'),
             },
@@ -48,7 +47,7 @@ export default function MeuPerfil() {
 
                     <div className="organizar_box_perfil">
                         <div>
-                            <h1 className="title_box"> Meu Perfil</h1>
+                            <h1 className="title_box">Perfil</h1>
                         </div>
                         <div className="container_label_foto">
                             <p className="p_perfil_g2">Foto Perfil</p>
