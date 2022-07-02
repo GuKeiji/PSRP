@@ -23,15 +23,32 @@ namespace api_processo_seletivo_2rp.Controllers
             _usuarioRepository = repo;
         }
 
-        [HttpGet("ListarTodas")]
-        public IActionResult GetAtividades()
+        [HttpGet("ListarTodos")]
+        public IActionResult GetUsuarios()
         {
 
             try
             {
-                List<Usuario> listaAtividade = _usuarioRepository.ListarTodos();
+                List<Usuario> listaUsuarios = _usuarioRepository.ListarTodos();
 
-                return Ok(listaAtividade);
+                return Ok(listaUsuarios);
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
+        }
+
+        [HttpGet("ListarTipos")]
+        public IActionResult GetTipoUsuario()
+        {
+
+            try
+            {
+                List<Tipousuario> listaTipos = _usuarioRepository.ListarTipos();
+
+                return Ok(listaTipos);
 
             }
             catch (Exception ex)

@@ -21,11 +21,11 @@ export default function EditarMeuPerfil() {
     const notify_editar = () => toast.success("Usuário Editado!");
 
     async function EditarPerfil(evento) {
+        debugger;
         setIsLoading(true);
         evento.preventDefault()
 
-        if (nome != "" && email != "" && senha != "") {
-
+        if (nome != "" && email != "" && senha != "" && idTipoUsuario != "") {
             console.log('chegueii');
             axios
                 .put('http://localhost:5000/api/Usuarios/AtualizarUsuario/' + localStorage.getItem('perfil-edit'), {
@@ -65,6 +65,17 @@ export default function EditarMeuPerfil() {
 
     return (
         <div>
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
             <div className="div_container">
                 <HeaderUsuario />
                 <main className="container_">
@@ -80,7 +91,7 @@ export default function EditarMeuPerfil() {
                             <h2>Perfil</h2>
                         </div>
                         <form className="G1_form_Cadastrar" onSubmit={EditarPerfil} >
-                        <div className='G1_organizar_form'>
+                            <div className='G1_organizar_form'>
                                 <div className='G1_organizar_inputs'>
                                     <div className="G1_inputLabel_Cadastrar">
                                         <input value={nome}
@@ -88,9 +99,31 @@ export default function EditarMeuPerfil() {
                                         <label className="label_descr" htmlFor="titulo">Nome do Usuário</label>
                                     </div>
                                     <div className="G1_inputLabel_Cadastrar">
-                                        <input value={idTipoUsuario}
+
+                                        <select
+                                            className="input_select"
+                                            name="tipo"
+                                            id="tipo"
+                                            value={idTipoUsuario}
+                                            onChange={(campo) => setIdTipoUsuario(campo.target.value)}
+                                        >
+                                            <option>Selecione um tipo</option>
+                                            <option value="1">Geral</option>
+                                            <option value="2">Admin</option>
+                                            <option value="3">Root</option>
+
+                                            {/* {listaTipo.map((tipo) => {
+                                                return (
+                                                    <option key={tipo.idTipoUsuario} value={tipo.idTipoUsuario}>
+                                                        {tipo.tipo}
+                                                    </option>
+                                                )
+                                            })} */}
+                                        </select>
+                                        <label className="label_descr" htmlFor="tipo">Tipo de Usuário</label>
+                                        {/* <input value={idTipoUsuario}
                                             onChange={(campo) => setIdTipoUsuario(campo.target.value)} type="number" name="moedas" placeholder="Digite o id do tipo do Usuario" />
-                                        <label className="label_descr" htmlFor="moedas">Tipo de Usuário</label>
+                                        <label className="label_descr" htmlFor="moedas">Tipo de Usuário</label> */}
                                     </div>
                                 </div>
                                 <div className='G1_organizar_inputs'>
@@ -107,34 +140,34 @@ export default function EditarMeuPerfil() {
                                 </div>
                             </div>
                             <div className="G1_organizar_toggle">
-                                    <label className="G1_label_obrigatoria">Situação</label>
-                                    <div className='G1_organizar_switchBtn'>
-                                        <input className="checkbox_switch"
-                                            type="checkbox"
-                                            id="switch2"
-                                            name="obrigatorio"
-                                            value={situacao}
-                                            onClick={checkSituacao}
-                                        />
-                                        {/* <label className='label_switch' htmlFor="switch2">Toggle</label> */}
-                                        {situacao && (
-                                            <div>
-                                                <label className='label_switch active' htmlFor="switch2">Toggle</label>
-                                                <p className='text_switch'>
-                                                    ATIVO
-                                                </p>
-                                            </div>
-                                        )}
-                                        {!situacao && (
-                                            <div>
-                                                <label className='label_switch' htmlFor="switch2">Toggle</label>
-                                                <p className='text_switch'>
-                                                    INATIVO
-                                                </p>
-                                            </div>
-                                        )}
-                                    </div>
+                                <label className="G1_label_obrigatoria">Situação</label>
+                                <div className='G1_organizar_switchBtn'>
+                                    <input className="checkbox_switch"
+                                        type="checkbox"
+                                        id="switch2"
+                                        name="obrigatorio"
+                                        value={situacao}
+                                        onClick={checkSituacao}
+                                    />
+                                    {/* <label className='label_switch' htmlFor="switch2">Toggle</label> */}
+                                    {situacao && (
+                                        <div>
+                                            <label className='label_switch active' htmlFor="switch2">Toggle</label>
+                                            <p className='text_switch'>
+                                                ATIVO
+                                            </p>
+                                        </div>
+                                    )}
+                                    {!situacao && (
+                                        <div>
+                                            <label className='label_switch' htmlFor="switch2">Toggle</label>
+                                            <p className='text_switch'>
+                                                INATIVO
+                                            </p>
+                                        </div>
+                                    )}
                                 </div>
+                            </div>
                             {isLoading && (
                                 <button className='G1_btn_Cadastrar' type="submit" >Carregando...</button>
                             )}

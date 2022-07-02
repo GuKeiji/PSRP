@@ -9,12 +9,16 @@ import { parseJwt } from '../../services/auth';
 import Perfil from '../../assets/img/perfil.svg';
 import Logout from '../../assets/img/logout.svg'
 import Seta from '../../assets/img/setinha.svg'
+import React, { useState , useEffect } from "react"
+
 
 export default function HeaderUsuario() {
-    // const [active, setMode] = useState(false);
+    const [verifyRole, setVerifyRole] = useState(parseJwt().role);
     // const ToggleMode = () => {
     //     setMode(!active)
     // }
+    
+    
 
     let history = useHistory();
     function logOut() {
@@ -28,6 +32,7 @@ export default function HeaderUsuario() {
     //     history.push("/MeuPerfil");
     // }
 
+    // useEffect(console.log(parseJwt().role), []);
 
 
     return (
@@ -39,8 +44,18 @@ export default function HeaderUsuario() {
                     <input type='hidden' name='some_name_to_form' />
                     <div class='hidden_header_g2'>
                         <Link to='/MeuPerfil' className="text_link_header_g1" ><span>Meu Perfil</span> </Link>
-                        <Link to='/Cadastro' className="text_link_header_g1" ><span>Cadastro de Usuarios</span> </Link>
-                        <Link to='/VerPerfis' className="text_link_header_g1" ><span>Ver Perfis</span> </Link>
+                        {parseJwt().role == 3 && (
+                            <Link to='/VerPerfis' className="text_link_header_g1" ><span>Ver Perfis</span> </Link>
+                        )}
+                        {parseJwt().role == 3 && (
+                            <Link to='/Cadastro' className="text_link_header_g1" ><span>Cadastro de Usuarios</span> </Link>
+                        )}
+                        {parseJwt().role == 2 && (
+                            <Link to='/VerPerfis' className="text_link_header_g1" ><span>Ver Perfis</span> </Link>
+                        )}
+                        {parseJwt().role == 2 && (
+                            <Link to='/Cadastro' className="text_link_header_g1" ><span>Cadastro de Usuarios</span> </Link>
+                        )}
                         <div class='select'>
                         </div>
                     </div>

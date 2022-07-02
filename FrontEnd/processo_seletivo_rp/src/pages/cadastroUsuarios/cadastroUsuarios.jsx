@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import Logo from "../../assets/img/2rpnet.svg"
 import axios from 'axios';
 import '../../assets/css/cadastroUsuarios.css'
@@ -16,16 +16,38 @@ export default function CadastrarUsuarios() {
     const [senha, setSenha] = useState('');
     const [situacao, setSituacao] = useState();
     const [isLoading, setIsLoading] = useState(false);
+    const [listaTipo, setListaTipo] = useState();
 
     const notify_preencherCampos = () => toast.error("Preencha todos os campos!");
     const notify_cadastrar = () => toast.success("Usuário Cadastrado!");
     const notify_erroCadastrar = () => toast.error("Email inválido ou já existe!");
 
+    function listarTipoUsuarios() {
+        axios.get("http://localhost:5000/api/Usuarios/ListarTipos"
+            , {
+                headers: {
+                    'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
+                }
+            })
+            .then(resposta => {
+                if (resposta.status === 200) {
+                    let lista = resposta.data
+                    setListaTipo(lista)
+                    console.log(resposta.data)
+                }
+            })
+
+            .catch(erro => console.log(erro))
+    };
+
+
+    useEffect(listarTipoUsuarios, []);
+
     async function CadastrarUsuario(evento) {
         setIsLoading(true);
         evento.preventDefault()
 
-        if (nome != "" && email != "" && senha != "") {
+        if (nome != "" && email != "" && senha != "" && idTipoUsuario != "") {
 
             // console.log('chegueii');
             await axios
@@ -51,7 +73,7 @@ export default function CadastrarUsuarios() {
                     }
 
                 })
-                .catch(erro => console.log(erro), setIsLoading(false), notify_erroCadastrar())
+                .catch(erro => console.log(erro), setIsLoading(false))
         }
         else {
             setIsLoading(false);
@@ -95,9 +117,29 @@ export default function CadastrarUsuarios() {
                                         <label className="label_descr" htmlFor="titulo">Nome do Usuário</label>
                                     </div>
                                     <div className="G1_inputLabel_Cadastrar">
-                                        <input value={idTipoUsuario}
-                                            onChange={(campo) => setIdTipoUsuario(campo.target.value)} type="number" name="moedas" placeholder="Digite o id do tipo do Usuario" />
-                                        <label className="label_descr" htmlFor="moedas">Tipo de Usuário</label>
+                                        <select
+                                            className="input_select"
+                                            name="tipo"
+                                            id="tipo"
+                                            value={idTipoUsuario}
+                                            onChange={(campo) => setIdTipoUsuario(campo.target.value)}
+                                        >
+                                            <option>Selecione um tipo</option>
+                                            <option value="1">Geral</option>
+                                            <option value="2">Admin</option>
+                                            <option value="3">Root</option>
+
+                                            {/* {listaTipo.map((tipo) => {
+                                                return (
+                                                    <option key={tipo.idTipoUsuario} value={tipo.idTipoUsuario}>
+                                                        {tipo.tipo}
+                                                    </option>
+                                                )
+                                            })} */}
+                                        </select>
+                                        <label className="label_descr" htmlFor="tipo">Tipo de Usuário</label>
+                                        {/* <input value={idTipoUsuario}
+                                            onChange={(campo) => setIdTipoUsuario(campo.target.value)} type="number" name="moedas" placeholder="Digite o id do tipo do Usuario" /> */}
                                     </div>
                                 </div>
                                 <div className='G1_organizar_inputs'>

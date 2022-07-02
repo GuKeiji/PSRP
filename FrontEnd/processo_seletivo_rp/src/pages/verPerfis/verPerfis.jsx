@@ -58,7 +58,7 @@ export default function VerPerfis() {
     }
 
     function listarUsuarios() {
-        axios.get("http://localhost:5000/api/Usuarios/ListarTodas"
+        axios.get("http://localhost:5000/api/Usuarios/ListarTodos"
             , {
                 headers: {
                     'Authorization': 'Bearer ' + localStorage.getItem('usuario-login')
@@ -79,7 +79,7 @@ export default function VerPerfis() {
     useEffect(listarUsuarios, []);
 
     return (
-        <div className="div_container G1_tela_atividades_container">
+        <div className="div_container_list G1_tela_atividades_container">
             <HeaderUsuario />
             <main className="container_atividades">
                 <div className="G1_organizar_main">

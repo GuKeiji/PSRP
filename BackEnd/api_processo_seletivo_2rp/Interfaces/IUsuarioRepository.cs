@@ -10,6 +10,7 @@ namespace api_processo_seletivo_2rp.Interfaces
 {
     public interface IUsuarioRepository
     {
+        List<Tipousuario> ListarTipos();
         Usuario Login(string email, string senha);
         Usuario BuscarUsuario(int idUsuario);
         List<Usuario> ListarTodos();

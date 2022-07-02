@@ -24,6 +24,7 @@ namespace api_processo_seletivo_2rp.Repositories
                 usuarioAchado.Nome = usuarioAtualizado.Nome;
                 usuarioAchado.Email = usuarioAtualizado.Email;
                 usuarioAchado.Senha = usuarioAtualizado.Senha;
+                ctx.Usuarios.Update(usuarioAchado);
                 ctx.SaveChanges();
             }
         }
@@ -58,6 +59,7 @@ namespace api_processo_seletivo_2rp.Repositories
                 usuarioAchado.Email = usuarioAtualizado.Email;
                 usuarioAchado.Situacao = usuarioAtualizado.Situacao;
                 usuarioAchado.Senha = usuarioAtualizado.Senha;
+                ctx.Usuarios.Update(usuarioAchado);
                 ctx.SaveChanges();
             }
         }
@@ -91,6 +93,11 @@ namespace api_processo_seletivo_2rp.Repositories
             Usuario usuarioAchado = BuscarUsuario(idUsuario);
             ctx.Usuarios.Remove(usuarioAchado);
             ctx.SaveChanges();
+        }
+
+        public List<Tipousuario> ListarTipos()
+        {
+            return ctx.Tipousuarios.ToList();
         }
 
         public List<Usuario> ListarTodos()

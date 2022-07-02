@@ -1,5 +1,12 @@
 /* ==============================   Todos Usuarios   ===============================================    */
 
+.div_container_list{
+    overflow-x: hidden;
+    background-image: url(https://www.2rpnet.com.br/media/casos-de-sucesso/backgrounds/casos-de-sucesso.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+}
 
 .G1_tela_atividades_container {
     background-color: #f2f2f2;

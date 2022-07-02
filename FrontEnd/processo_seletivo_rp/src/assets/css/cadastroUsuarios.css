@@ -240,3 +240,45 @@ font-family: 'Montserrat', sans-serif;
     font-family: 'Quicksand', sans-serif;
     color: #ffffff;
 }
+
+.input_select{
+    border: 1px solid lightgrey;
+    border-radius: 15px;
+    background-color: #ffffff;
+    outline: none;
+    /* min-width: 250px; */
+    width: 14.7vw;
+    height: 6vh;
+    padding: 15px 20px;
+    font-size: 16px;
+    transition: all .1s linear;
+    -webkit-transition: all .1s linear;
+    -moz-transition: all .1s linear;
+    -webkit-appearance: none;
+}
+
+.G1_inputLabel_Cadastrar input::placeholder {
+    color: transparent;
+}
+
+
+
+.G1_inputLabel_Cadastrar select:required:invalid+label {
+    color: red;
+}
+
+
+.G1_inputLabel_Cadastrar select:focus:required:invalid {
+    border: 2px solid red;
+}
+
+.G1_inputLabel_Cadastrar select:required:invalid+label:before {
+    content: '*';
+}
+
+.G1_inputLabel_Cadastrar select:focus+label,
+.G1_inputLabel_Cadastrar select:not(:placeholder-shown)+label {
+    font-size: 13px;
+    top: 0;
+
+}
