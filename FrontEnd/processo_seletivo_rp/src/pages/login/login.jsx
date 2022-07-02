@@ -4,6 +4,9 @@ import axios from 'axios';
 import '../../assets/css/login.css'
 import { useHistory } from 'react-router-dom'
 import { parseJwt } from "../../services/auth";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 export default function Login() {
     const [emailUsuario, setEmailUsuario] = useState('');
@@ -11,39 +14,56 @@ export default function Login() {
     // const notify_Logar_Failed = () => toast.error("Email ou Senha inválidos!")
     const history = useHistory();
 
-
-
+    const notify_preencherCampos = () => toast.error("Preencha todos os campos!");
+    const notify_erroLogar = () => toast.error("Email ou Senha inválidos!");
 
     const FazerLogin = (event) => {
+        debugger;
         event.preventDefault();
 
+        if (emailUsuario != "" && senhaUsuario != "") {
 
-        axios.post('http://localhost:5000/api/Login/Login', {
-            email: emailUsuario,
-            senha: senhaUsuario
+            axios.post('http://localhost:5000/api/Login/Login', {
+                email: emailUsuario,
+                senha: senhaUsuario
+            }
+            )
+                .then(resposta => {
+                    if (resposta.status === 200) {
+                        localStorage.setItem('usuario-login', resposta.data.token)
+                        localStorage.setItem('perfil-edit', parseJwt().jti);
+                        if (parseJwt().role == 1) {
+                            history.push('/MeuPerfil')
+                        }
+                        else if (parseJwt().role == 2 || parseJwt().role == 3) {
+                            history.push('/Cadastro')
+                        }
+
+
+                    }
+
+                })
+                .catch(erro => console.log(erro), notify_erroLogar())
+
         }
-        )
-            .then(resposta => {
-                if (resposta.status === 200) {
-                    localStorage.setItem('usuario-login', resposta.data.token)
-                    localStorage.setItem('perfil-edit', parseJwt().jti);
-                    if (parseJwt().role == 1) {
-                        history.push('/MeuPerfil')
-                    }
-                    else if (parseJwt().role == 2 || parseJwt().role == 3) {
-                        history.push('/Cadastro')
-                    }
-                    
-                    
-                }
-
-            })
-            .catch(erro => console.log(erro))
-
+        else {
+            notify_preencherCampos()
+        }
     }
 
     return (
-        <div className="">
+        <div>
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
             <main className="container_main">
                 <div className="container_logo container">
 

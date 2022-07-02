@@ -5,6 +5,8 @@ import '../../assets/css/editarPerfil.css'
 import { useHistory } from 'react-router-dom'
 import { parseJwt } from "../../services/auth";
 import HeaderUsuario from "../../components/header/header";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function EditarMeuPerfil() {
 
@@ -14,6 +16,9 @@ export default function EditarMeuPerfil() {
     const [senha, setSenha] = useState('');
     const [situacao, setSituacao] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
+
+    const notify_preencherCampos = () => toast.error("Preencha todos os campos!");
+    const notify_editar = () => toast.success("Usuário Editado!");
 
     async function EditarPerfil(evento) {
         setIsLoading(true);
@@ -42,6 +47,7 @@ export default function EditarMeuPerfil() {
                         setEmail('');
                         setSenha('');
                         setSituacao(false);
+                        notify_editar();
                     }
 
                 })
@@ -49,6 +55,7 @@ export default function EditarMeuPerfil() {
         }
         else {
             setIsLoading(false);
+            notify_preencherCampos();
         }
     }
 

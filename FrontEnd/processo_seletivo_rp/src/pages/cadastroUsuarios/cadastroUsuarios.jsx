@@ -5,6 +5,8 @@ import '../../assets/css/cadastroUsuarios.css'
 import { useHistory } from 'react-router-dom'
 import { parseJwt } from "../../services/auth";
 import HeaderUsuario from "../../components/header/header";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function CadastrarUsuarios() {
 
@@ -15,13 +17,17 @@ export default function CadastrarUsuarios() {
     const [situacao, setSituacao] = useState();
     const [isLoading, setIsLoading] = useState(false);
 
+    const notify_preencherCampos = () => toast.error("Preencha todos os campos!");
+    const notify_cadastrar = () => toast.success("Usuário Cadastrado!");
+    const notify_erroCadastrar = () => toast.error("Email inválido ou já existe!");
+
     async function CadastrarUsuario(evento) {
         setIsLoading(true);
         evento.preventDefault()
 
         if (nome != "" && email != "" && senha != "") {
 
-            console.log('chegueii');
+            // console.log('chegueii');
             await axios
                 .post('http://localhost:5000/api/Usuarios/Cadastrar', {
                     senha: senha,
@@ -41,18 +47,31 @@ export default function CadastrarUsuarios() {
                         setIdTipoUsuario('');
                         setEmail('');
                         setSenha('');
+                        notify_cadastrar();
                     }
 
                 })
-                .catch(erro => console.log(erro), setIsLoading(false));
+                .catch(erro => console.log(erro), setIsLoading(false), notify_erroCadastrar())
         }
         else {
             setIsLoading(false);
+            notify_preencherCampos();
         }
     }
 
     return (
         <div>
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
             <div className="div_container">
                 <HeaderUsuario />
                 <main className="container_">

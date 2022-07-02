@@ -5,6 +5,8 @@ import '../../assets/css/editarMeuPerfil.css'
 import { useHistory } from 'react-router-dom'
 import { parseJwt } from "../../services/auth";
 import HeaderUsuario from "../../components/header/header";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function EditarMeuPerfil() {
 
@@ -12,6 +14,10 @@ export default function EditarMeuPerfil() {
     const [email, setEmail] = useState('');
     const [senha, setSenha] = useState('');
     const [isLoading, setIsLoading] = useState(false);
+
+    const notify_preencherCampos = () => toast.error("Preencha todos os campos!");
+    const notify_editar = () => toast.success("Usuário Editado!");
+    // const notify_erroEditar = () => toast.error("Email inválido ou já existe!");
 
     async function EditarPerfil(evento) {
         setIsLoading(true);
@@ -36,6 +42,7 @@ export default function EditarMeuPerfil() {
                         setNome('');
                         setEmail('');
                         setSenha('');
+                        notify_editar()
                     }
 
                 })
@@ -43,11 +50,23 @@ export default function EditarMeuPerfil() {
         }
         else {
             setIsLoading(false);
+            notify_preencherCampos();
         }
     }
 
     return (
         <div>
+            <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
             <div className="div_container">
                 <HeaderUsuario />
                 <main className="container_">
