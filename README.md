@@ -3,6 +3,30 @@
 ## Sobre
 A proposta do projeto é desenvolver uma aplicação que possibilita o cadastro, login, vizualização e alteração de usuários.
 
+## Escopo
+Criar um sistema que possibilite o cadastro e login de usuários, com as seguintes funções:
+
+## Funções
+<ul>
+  <li>Cadastrar um novo usuário</li>
+  <li>Listar informações de um usuário</li>
+  <li>Alterar o nome e o tipo de um usuário</li>
+  <li>Excluir um usuário</li>
+  <li>Alterar a Status de um usuário (ativo ou inativo)</li>
+</ul>
+
+## Regras de Negócio
+<ul>
+  <li>A tabela usuários deve conter os campos nome, senha, tipo, email e status</li>
+  <li>A tabela de tipos deve ter o tipo do usuário (geral, admin, root)</li>
+  <li>Um usuário pode ter apenas um único tipo</li>
+  <li>Apenas usuários do tipo root e admin podem cadastrar novos usuários</li>
+  <li>Apenas usuários do tipo root e admin podem alterar qualquer informação do usuário (inclusive status)</li>
+  <li>Apenas usuários root podem excluir usuários</li>
+  <li>Usuários do tipo geral só têm acesso a funcionalidade de listar informações de seu próprio usuário, bem como alterar suas próprias informações</li>
+  <li>O login deve ser feito com email e senha</li>
+</ul>
+
 ## Tecnologias
 <div>
   <h3>Modelagem</h3>
