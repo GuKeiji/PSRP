@@ -6,6 +6,8 @@ import { useHistory } from 'react-router-dom'
 import { parseJwt } from "../../services/auth";
 import FtPerfil from '../../assets/img/perfil.svg';
 import HeaderUsuario from "../../components/header/header";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function VerPerfis() {
     const [listaUsuarios, setListaUsuarios] = useState([]);
@@ -15,6 +17,8 @@ export default function VerPerfis() {
     const [idAtividadeModal, setIdAtividadeModal] = useState()
     const [isLoading, setIsLoading] = useState(false);
     const [verifyRole, setVerifyRole] = useState(parseJwt().role);
+    
+    const notify_delete = () => toast.success("Usuário Deletado!");
 
 
 
@@ -26,7 +30,6 @@ export default function VerPerfis() {
     }
 
     function excluirUsuario(id) {
-        // debugger;
         // console.log(id);
         // console.log(parseJwt().role);
         // console.log(parseJwt());
@@ -40,6 +43,7 @@ export default function VerPerfis() {
             .then(resposta => {
                 if (resposta.status === 200) {
                     listarUsuarios()
+                    notify_delete();
                 }
             })
 
@@ -80,6 +84,17 @@ export default function VerPerfis() {
 
     return (
         <div className="div_container_list G1_tela_atividades_container">
+             <ToastContainer
+                position="top-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+            />
             <HeaderUsuario />
             <main className="container_atividades">
                 <div className="G1_organizar_main">

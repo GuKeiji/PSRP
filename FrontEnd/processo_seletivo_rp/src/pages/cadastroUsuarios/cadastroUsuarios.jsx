@@ -20,7 +20,7 @@ export default function CadastrarUsuarios() {
 
     const notify_preencherCampos = () => toast.error("Preencha todos os campos!");
     const notify_cadastrar = () => toast.success("Usuário Cadastrado!");
-    const notify_erroCadastrar = () => toast.error("Email inválido ou já existe!");
+    const notify_erroCadastrar = () => toast.error("Email já existe!");
 
     function listarTipoUsuarios() {
         axios.get("http://localhost:5000/api/Usuarios/ListarTipos"
@@ -70,10 +70,11 @@ export default function CadastrarUsuarios() {
                         setEmail('');
                         setSenha('');
                         notify_cadastrar();
+                        setIsLoading(false);
                     }
 
                 })
-                .catch(erro => console.log(erro), setIsLoading(false))
+                .catch((erro) => {console.log(erro); setIsLoading(false); notify_erroCadastrar()});
         }
         else {
             setIsLoading(false);

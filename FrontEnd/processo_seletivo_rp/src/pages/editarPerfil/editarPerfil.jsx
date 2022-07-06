@@ -21,7 +21,6 @@ export default function EditarMeuPerfil() {
     const notify_editar = () => toast.success("Usuário Editado!");
 
     async function EditarPerfil(evento) {
-        debugger;
         setIsLoading(true);
         evento.preventDefault()
 
@@ -47,6 +46,7 @@ export default function EditarMeuPerfil() {
                         setEmail('');
                         setSenha('');
                         setSituacao(false);
+                        setIsLoading(false);
                         notify_editar();
                     }
 

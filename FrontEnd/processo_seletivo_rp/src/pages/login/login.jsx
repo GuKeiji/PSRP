@@ -18,7 +18,6 @@ export default function Login() {
     const notify_erroLogar = () => toast.error("Email ou Senha inválidos!");
 
     const FazerLogin = (event) => {
-        debugger;
         event.preventDefault();
 
         if (emailUsuario != "" && senhaUsuario != "") {
@@ -43,7 +42,7 @@ export default function Login() {
                     }
 
                 })
-                .catch(erro => console.log(erro), notify_erroLogar())
+                .catch((erro) => {console.log(erro); notify_erroLogar()})
 
         }
         else {

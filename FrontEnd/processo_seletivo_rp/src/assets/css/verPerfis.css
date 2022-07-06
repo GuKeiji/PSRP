@@ -156,6 +156,18 @@
     font-weight: 500;
 }
 
+.G1_btn_vizualizar:hover {
+    background-color: #001342;
+    color: #ffffff;
+    width: 7vw;
+    height: 4vh;
+    border-radius: 10px;
+    border: none;
+    font-family: 'Montserrat', sans-serif;
+    cursor: pointer;
+    font-weight: 500;
+}
+
 .container_spans {
     display: flex;
     justify-content: space-between;

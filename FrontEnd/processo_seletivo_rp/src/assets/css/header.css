@@ -149,6 +149,11 @@ div.select_header_g2 p:hover, div.select_header_g2:hover {
     margin: 0 15px;
 }
 
+.img_perfil_g2:hover {
+    background-color: #001342;
+    margin: 0 15px;
+}
+
 .img_perfil_g2 img{
     width: 65px;
     object-fit: contain;
@@ -169,6 +174,14 @@ div.select_header_g2 p:hover, div.select_header_g2:hover {
     background-color: transparent;
     cursor: pointer;
 }
+
+.img_logout_header_g2:hover {
+    width: 30px;
+    height: 30px;
+    background-color: #001342;
+    cursor: pointer;
+}
+
 table {
     border-collapse: collapse;
   }

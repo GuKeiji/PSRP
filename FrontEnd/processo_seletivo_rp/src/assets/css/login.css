@@ -131,3 +131,17 @@
     cursor: pointer;
     color: white;
 }
+
+.btn_entrar:hover {
+    min-width: 250px;
+    height: 5vh;
+    width: 100%;
+    border-radius: 15px;
+    background-color: #001342;
+    padding: 15 25;
+    border: none;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    color: white;
+}

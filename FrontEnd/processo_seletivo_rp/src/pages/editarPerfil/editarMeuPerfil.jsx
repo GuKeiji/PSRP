@@ -43,10 +43,11 @@ export default function EditarMeuPerfil() {
                         setEmail('');
                         setSenha('');
                         notify_editar()
+                        setIsLoading(false);
                     }
 
                 })
-                .catch(erro => console.log(erro), setIsLoading(false));
+                .catch((erro) => {console.log(erro); setIsLoading(false)});
         }
         else {
             setIsLoading(false);
