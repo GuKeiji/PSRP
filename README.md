@@ -1,4 +1,4 @@
-# Processo Seletivo 2RP
+# PS2R
 
 ## Sobre
 A proposta do projeto é desenvolver uma aplicação que possibilita o cadastro, login, vizualização e alteração de usuários.
